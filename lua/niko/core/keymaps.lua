@@ -74,7 +74,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 --basic
 keymap.set("n", ";", ":", { desc = "Enter command mode" }) -- close current split window
 keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" }) -- select all
-keymap.set("n", "<leader>s", [[:%s/<<C-r><C-w>>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Select all" }) -- select all
+keymap.set("n", "<leader>s", [[:%s/<<C-r><C-w>>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search and replace" }) -- search and replace
 
 -- keep cursor on vertical motion
 keymap.set("n", "<C-d>", "<C-d>zz", { desc = "keep cursor on vertical motion" })
@@ -114,6 +114,9 @@ keymap.set("i", "<C-h>", "<Left>", { desc = "Move left" })
 keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
 keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
+
+-- escape insert mode (let's see if i like this one)
+keymap.set("i", "jj", "<ESC>", { desc = "Esape insert mode" })
 
 -- move lines in select mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
