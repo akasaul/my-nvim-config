@@ -123,8 +123,9 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
 
 --flutter
-keymap.set("n", "<leader>fr", ":FlutterRun<CR>")
-keymap.set("n", "<leader>fd", ":FlutterDevices<CR>")
+keymap.set("n", "<leader>fru", ":FlutterRun<CR>")
+keymap.set("n", "<leader>fde", ":FlutterDevices<CR>")
 keymap.set("n", "<leader>fe", ":FlutterEmulators<CR>")
 keymap.set("n", "<leader>fre", ":FlutterReload<CR>")
-keymap.set("n", "<leader>fR", ":FlutterReload<CR>")
+keymap.set("n", "<leader>fD", ":FlutterVisualDebug<CR>")
+keymap.set("n", "<leader>fq", ":FlutterQuit<CR>")
