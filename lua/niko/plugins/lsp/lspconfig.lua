@@ -120,7 +120,7 @@ return {
         })
       end,
       ["volar"] = function()
-        -- configure svelte server
+        -- configure volar server
         lspconfig["volar"].setup({
           capabilities = capabilities,
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
