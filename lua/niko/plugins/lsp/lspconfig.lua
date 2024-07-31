@@ -100,6 +100,39 @@ return {
           end,
         })
       end,
+      ["tsserver"] = function()
+        -- configure tsserver server
+        lspconfig["tsserver"].setup({
+          init_options = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                languages = { "javascript", "typescript", "vue" },
+              },
+            },
+          },
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+          },
+        })
+      end,
+      ["volar"] = function()
+        -- configure svelte server
+        lspconfig["volar"].setup({
+          capabilities = capabilities,
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+          init_options = {
+            typescript = {
+              -- tsdk = "/path/to/.npm/lib/node_modules/typescript/lib",
+              -- Alternative location if installed as root:
+              tsdk = "/usr/local/lib/node_modules/typescript/lib",
+            },
+          },
+        })
+      end,
       ["gopls"] = function()
         -- configure golang language server
         lspconfig["gopls"].setup({
@@ -120,14 +153,14 @@ return {
         -- configure graphql language server
         lspconfig["graphql"].setup({
           capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+          filetypes = { "graphql", "gql", "svelte", "vue", "typescriptreact", "javascriptreact" },
         })
       end,
       ["emmet_ls"] = function()
         -- configure emmet language server
         lspconfig["emmet_ls"].setup({
           capabilities = capabilities,
-          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte", "vue" },
         })
       end,
       ["lua_ls"] = function()
