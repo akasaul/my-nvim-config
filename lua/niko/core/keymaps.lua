@@ -4,6 +4,7 @@ local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "ji", "`", { desc = "Insert tilde on insert mode" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
