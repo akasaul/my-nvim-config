@@ -100,25 +100,25 @@ return {
           end,
         })
       end,
-      ["tsserver"] = function()
-        -- configure tsserver server
-        lspconfig["tsserver"].setup({
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                languages = { "javascript", "typescript", "vue" },
-              },
-            },
-          },
-          filetypes = {
-            "javascript",
-            "typescript",
-            "vue",
-          },
-        })
-      end,
+      -- configure tsserver server for vue volar
+      -- ["tsserver"] = function()
+      --   lspconfig["tsserver"].setup({
+      --     init_options = {
+      --       plugins = {
+      --         {
+      --           name = "@vue/typescript-plugin",
+      --           location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+      --           languages = { "javascript", "typescript", "vue" },
+      --         },
+      --       },
+      --     },
+      --     filetypes = {
+      --       "javascript",
+      --       "typescript",
+      --       "vue",
+      --     },
+      --   })
+      -- end,
       ["volar"] = function()
         -- configure volar server
         lspconfig["volar"].setup({
