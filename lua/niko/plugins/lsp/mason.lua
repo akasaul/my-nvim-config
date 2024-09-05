@@ -39,6 +39,9 @@ return {
         "prismals",
         "pyright",
         "gopls",
+        "php-debug-adapter",
+        "phpstan",
+        "phpactor",
       },
     })
 
@@ -50,6 +53,7 @@ return {
         -- "black", -- python formatter
         -- "pylint",
         "eslint_d",
+        "pint",
       },
     })
   end,
