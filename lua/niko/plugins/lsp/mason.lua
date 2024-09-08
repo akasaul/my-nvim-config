@@ -39,8 +39,6 @@ return {
         "prismals",
         "pyright",
         "gopls",
-        "php-debug-adapter",
-        "phpstan",
         "phpactor",
       },
     })
