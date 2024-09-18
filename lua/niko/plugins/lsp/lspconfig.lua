@@ -41,6 +41,15 @@ return {
         opts.desc = "Show LSP type definitions"
         keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
+        opts.desc = "Show Document Symbols"
+        keymap.set("n", "<leader>pp", "<cmd>Telescope lsp_document_symbols<CR>", opts) -- show document symbols
+
+        opts.desc = "Show Workspce Symbols"
+        keymap.set("n", "<leader>P", "<cmd>Telescope lsp_workspace_symbols<CR>", opts) -- show document symbols
+
+        opts.desc = "Show Dynamic Workspace Symbols"
+        keymap.set("n", "<leader>ps", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts) -- show document symbols
+
         opts.desc = "See available code actions"
         keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 

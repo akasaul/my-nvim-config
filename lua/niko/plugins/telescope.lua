@@ -32,8 +32,10 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
-            ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-            ["<C-t>"] = trouble_telescope.open,
+            ["<leader>t"] = actions.send_to_qflist + custom_actions.open_trouble_qflist,
+          },
+          n = {
+            ["<leader>t"] = actions.send_to_qflist + custom_actions.open_trouble_qflist,
           },
         },
       },
@@ -45,7 +47,11 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    -- keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>fr", function()
+      require("telescope.builtin").resume({ only_cwd = true })
+    end, { desc = "Fuzzy find recent files in cwd" })
+
     -- keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers" })
     keymap.set("n", "<leader>b", function()
       require("telescope.builtin").buffers({ sort_mru = true })

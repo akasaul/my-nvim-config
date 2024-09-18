@@ -29,8 +29,11 @@ keymap.set("n", "H", "_")
 keymap.set("n", "L", "$")
 
 -- Navigate buffers
-keymap.set("n", "<Right>", ":bnext<CR>", opts)
-keymap.set("n", "<Left>", ":bprevious<CR>", opts)
+keymap.set("n", "<leader>l", ":bnext<CR>", opts)
+keymap.set("n", "<leader>h", ":bprevious<CR>", opts)
+keymap.set("n", "<leader>c", ":bdelete<CR>", opts)
+keymap.set("n", "<leader>bw", ":bwipe<CR>", opts)
+keymap.set("n", "<leader>bp", "<cmd> BufferLinePick <CR>")
 
 -- search current buffer
 keymap.set("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
@@ -116,12 +119,25 @@ keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
 keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
+-- navigate with numbers
+for i = 1, 9 do
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>" .. i,
+    ":BufferLineGoToBuffer " .. i .. "<CR>",
+    { noremap = true, silent = true }
+  )
+end
+
 -- escape insert mode (let's see if i like this one)
 keymap.set("i", "jj", "<ESC>", { desc = "Esape insert mode" })
 
 -- move lines in select mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+
+-- remove default behavior of  replace when select pasting
+keymap.set("x", "<leader>p", '"_dP')
 
 --flutter
 keymap.set("n", "<leader>fru", ":FlutterRun<CR>")
