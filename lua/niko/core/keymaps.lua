@@ -138,6 +138,7 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
 
 -- remove default behavior of  replace when select pasting
 keymap.set("x", "<leader>p", '"_dP')
+keymap.set("x", "p", '"_dP')
 
 --flutter
 keymap.set("n", "<leader>fru", ":FlutterRun<CR>")
