@@ -110,38 +110,51 @@ return {
         })
       end,
       -- configure tsserver server for vue volar
-      ["tsserver"] = function()
-        lspconfig["tsserver"].setup({
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                languages = { "javascript", "typescript", "vue" },
-              },
-            },
-          },
-          filetypes = {
-            "javascript",
-            "typescript",
-            "vue",
-          },
-        })
-      end,
-      ["volar"] = function()
-        -- configure volar server
-        lspconfig["volar"].setup({
-          capabilities = capabilities,
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-          init_options = {
-            typescript = {
-              -- tsdk = "/path/to/.npm/lib/node_modules/typescript/lib",
-              -- Alternative location if installed as root:
-              tsdk = "/usr/local/lib/node_modules/typescript/lib",
-            },
-          },
-        })
-      end,
+    --   ["ts_ls"] = function()
+    --     lspconfig["ts_ls"].setup({
+    --       on_attach =  function(client, bufnr)
+    -- local opts = { noremap = true, silent = true, buffer = bufnr }
+    --
+    -- --set keybind for go to definition
+    -- keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    -- end,
+    --
+    --       init_options = {
+    --         plugins = {
+    --           {
+    --             name = "@vue/typescript-plugin",
+    --             location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+    --             languages = { "javascript", "typescript", "vue" },
+    --           },
+    --         },
+    --       },
+    --       filetypes = {
+    --         "javascript",
+    --         "typescript",
+    --         "vue",
+    --       },
+    --     })
+      -- end,
+    --   ["volar"] = function()
+    --     -- configure volar server
+    --     lspconfig["volar"].setup({
+    --       capabilities = capabilities,
+    --       on_attach =  function(client, bufnr)
+    -- local opts = { noremap = true, silent = true, buffer = bufnr }
+    --
+    -- --set keybind for go to definition
+    -- keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    -- end,
+    --       filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+    --       init_options = {
+    --         typescript = {
+    --           -- tsdk = "/path/to/.npm/lib/node_modules/typescript/lib",
+    --           -- Alternative location if installed as root:
+    --           tsdk = "/usr/local/lib/node_modules/typescript/lib",
+    --         },
+    --       },
+    --     })
+    --   end,
       ["gopls"] = function()
         -- configure golang language server
         lspconfig["gopls"].setup({

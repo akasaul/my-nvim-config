@@ -27,4 +27,7 @@ return {
     "axkirillov/hbac.nvim",
     config = true,
   },
+  {
+    "rushjs1/nuxt-goto.nvim",
+  }
 }
