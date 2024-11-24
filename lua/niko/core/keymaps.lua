@@ -13,7 +13,7 @@ keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- incremen
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- Fast saving
-keymap.set("n", "<Leader>w", ":write!<CR>", { desc = "Fast save" }) -- increment
+keymap.set("n", "<Leader>w", ":wa <CR>", { desc = "Fast save" }) -- increment
 keymap.set("n", "<Leader>q", ":q!<CR>", { desc = "Fast exit" }) -- decrement
 --
 -- Remap for dealing with visual line wraps
@@ -27,6 +27,8 @@ keymap.set("v", ">", ">gv")
 -- Move to start/end of line
 keymap.set("n", "H", "_")
 keymap.set("n", "L", "$")
+keymap.set("v", "H", "_")
+keymap.set("v", "L", "$")
 
 -- Navigate buffers
 keymap.set("n", "<leader>l", ":bnext<CR>", opts)
@@ -148,3 +150,20 @@ keymap.set("n", "<leader>fre", ":FlutterReload<CR>")
 keymap.set("n", "<leader>fhr", ":FlutterHotRestart<CR>")
 keymap.set("n", "<leader>fD", ":FlutterVisualDebug<CR>")
 keymap.set("n", "<leader>fq", ":FlutterQuit<CR>")
+
+-- lazydocker
+keymap.set("n", "<leader>ld", "<cmd>LazyDocker<CR>")
+
+-- copilot chat
+keymap.set("n", "<leader>aa", "<cmd>CopilotChatToggle<CR>", {
+  desc = "Copilot Chat Open",
+})
+keymap.set("v", "<leader>ac", "<cmd>CopilotChatClose<CR>", {
+  desc = "Copilot Chat Close",
+})
+keymap.set("v", "<leader>as", "<cmd>CopilotChatStop<CR>", {
+  desc = "Copilot Chat Stop",
+})
+keymap.set("v", "<leader>ae", "<cmd>CopilotChatExplain<CR>", {
+  desc = "Copilot Chat Stop",
+})
