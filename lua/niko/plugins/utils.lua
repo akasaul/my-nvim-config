@@ -63,31 +63,31 @@ return {
       require("telescope").load_extension("undo")
     end,
   },
-  -- {
-  --   "supermaven-inc/supermaven-nvim",
-  --   config = function()
-  --     require("supermaven-nvim").setup({
-  --       enabled = false,
-  --       keymaps = {
-  --         -- accept_suggestion = "<Tab>",
-  --         accept_suggestion = "<C-i>",
-  --         clear_suggestion = "<C-]>",
-  --         accept_word = "<C-j>",
-  --       },
-  --       ignore_filetypes = { cpp = true }, -- or { "cpp", }
-  --       color = {
-  --         suggestion_color = "#ffffff",
-  --         cterm = 244,
-  --       },
-  --       log_level = "info", -- set to "off" to disable logging completely
-  --       disable_inline_completion = false, -- disables inline completion for use with cmp
-  --       disable_keymaps = false, -- disables built in keymaps for more manual control
-  --       condition = function()
-  --         return false
-  --       end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-  --     })
-  --   end,
-  -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({
+        enabled = false,
+        keymaps = {
+          -- accept_suggestion = "<Tab>",
+          accept_suggestion = "<C-i>",
+          clear_suggestion = "<C-]>",
+          accept_word = "<C-j>",
+        },
+        ignore_filetypes = { cpp = true }, -- or { "cpp", }
+        color = {
+          suggestion_color = "#ffffff",
+          cterm = 244,
+        },
+        log_level = "info", -- set to "off" to disable logging completely
+        disable_inline_completion = false, -- disables inline completion for use with cmp
+        disable_keymaps = false, -- disables built in keymaps for more manual control
+        condition = function()
+          return false
+        end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+      })
+    end,
+  },
   {
     "pocco81/auto-save.nvim",
     enabled = false,
@@ -133,115 +133,39 @@ return {
     },
   },
   {
-    {
-      "CopilotC-Nvim/CopilotChat.nvim",
-      branch = "canary",
-      dependencies = {
-        { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    "barrett-ruth/live-server.nvim",
+    build = "pnpm add -g live-server",
+    cmd = { "LiveServerStart", "LiveServerStop" },
+    config = true,
+  },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    cmd = { "Obsidian" },
+    ft = "markdown",
+    lazy = true,
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      dir = "/home/ispreadflames/Documents/notes",
+      workspaces = {
+        {
+          name = "work",
+          path = "/home/ispreadflames/Documents/notes/work",
+        },
+        {
+          name = "personal",
+          path = "/home/ispreadflames/Documents/notes/personal",
+        },
       },
-      build = "make tiktoken", -- Only on MacOS or Linux
-      opts = {
-        -- See Configuration section for options
-      },
-      -- See Commands section for default commands if you want to lazy load on them
     },
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        panel = {
-          enabled = false,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<C-i>",
-            refresh = "<leader>gr",
-            open = "<M-CR>",
-          },
-          layout = {
-            position = "bottom", -- | top | left | right
-            ratio = 0.4,
-          },
-        },
-        suggestion = {
-          enabled = false,
-          auto_trigger = false,
-          hide_during_completion = true,
-          debounce = 75,
-          keymap = {
-            accept = "<C-i>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          yaml = false,
-          markdown = false,
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
-          ["."] = false,
-        },
-        copilot_node_command = "node", -- Node.js version must be > 18.x
-        server_opts_overrides = {},
-      })
-    end,
+    "https://github.com/EmranMR/tree-sitter-blade",
+    highlights = {
+      enable = true,
+    },
   },
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   lazy = false,
-  --   version = false, -- set this if you want to always pull the latest change
-  --   opts = {
-  --     -- add any opts here
-  --   },
-  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  --   build = "make",
-  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     --- The below dependencies are optional,
-  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua", -- for providers='copilot'
-  --     {
-  --       -- support for image pasting
-  --       "HakonHarnes/img-clip.nvim",
-  --       event = "VeryLazy",
-  --       opts = {
-  --         -- recommended settings
-  --         default = {
-  --           embed_image_as_base64 = false,
-  --           prompt_for_file_name = false,
-  --           drag_and_drop = {
-  --             insert_mode = true,
-  --           },
-  --           -- required for Windows users
-  --           use_absolute_path = true,
-  --         },
-  --       },
-  --     },
-  --     {
-  --       -- Make sure to set this up properly if you have lazy=true
-  --       "MeanderingProgrammer/render-markdown.nvim",
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
-  --   },
-  -- },
 }

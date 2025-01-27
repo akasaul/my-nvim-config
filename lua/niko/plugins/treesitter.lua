@@ -10,18 +10,26 @@ return {
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
+    -- configure custom parser for Blade
+    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    parser_config.blade = {
+      install_info = {
+        url = "https://github.com/EmranMR/tree-sitter-blade",
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "blade", -- associate *.blade.php files with the blade parser
+    }
+
     -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
+    treesitter.setup({
       highlight = {
         enable = true,
       },
-      -- enable indentation
       indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
       },
-      -- ensure these language parsers are installed
       ensure_installed = {
         "json",
         "javascript",
@@ -47,6 +55,7 @@ return {
         "go",
         "python",
         "php",
+        "blade", -- add Blade to ensure_installed
       },
       incremental_selection = {
         enable = true,
@@ -58,5 +67,13 @@ return {
         },
       },
     })
+
+    -- set *.blade.php files to use Blade filetype
+    vim.cmd([[
+      augroup BladeFiletypeRelated
+        au!
+        au BufNewFile,BufRead *.blade.php set ft=blade
+      augroup END
+    ]])
   end,
 }
